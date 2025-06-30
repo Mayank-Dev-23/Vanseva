@@ -1,0 +1,535 @@
+.payment-success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.success-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border-radius: 25px;
+  padding: 3rem;
+  box-shadow: var(--shadow-heavy);
+  width: 100%;
+  max-width: 550px;
+  text-align: center;
+  animation: slideInUp 0.8s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.success-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--success-gradient);
+}
+
+.success-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(40, 167, 69, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.success-icon {
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.checkmark {
+  width: 100px;
+  height: 100px;
+  background: var(--success-gradient);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  animation: scaleIn 0.6s ease-out 0.3s both;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.checkmark::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  animation: shimmer-check 2s infinite;
+}
+
+@keyframes shimmer-check {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.checkmark span {
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  animation: checkmarkAppear 0.8s ease-out 0.8s both;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.success-content {
+  position: relative;
+  z-index: 2;
+}
+
+.success-content h2 {
+  color: #28a745;
+  font-size: 2.5rem;
+  margin-bottom: 1.2rem;
+  font-weight: 800;
+  background: var(--success-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: titleBounce 1s ease-out 1s both;
+}
+
+@keyframes titleBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+  }
+  50% {
+    transform: translateY(10px) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.success-message {
+  color: #666;
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  font-weight: 400;
+  animation: fadeInUp 1s ease-out 1.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.transaction-details {
+  background: rgba(248, 249, 250, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  text-align: left;
+  border: 1px solid rgba(40, 167, 69, 0.1);
+  animation: slideInUp 1s ease-out 1.4s both;
+  position: relative;
+}
+
+.transaction-details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--success-gradient);
+  border-radius: 20px 20px 0 0;
+}
+
+.transaction-details h3 {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #28a745;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(40, 167, 69, 0.1);
+  transition: all 0.3s ease;
+}
+
+.detail-row:hover {
+  background: rgba(40, 167, 69, 0.05);
+  border-radius: 10px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 -1rem;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  color: #555;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  color: #333;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: right;
+}
+
+.detail-value.amount {
+  color: #28a745;
+  font-weight: 800;
+  font-size: 1.3rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.success-actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 1s ease-out 1.6s both;
+}
+
+.new-payment-button {
+  background: var(--secondary-gradient);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: var(--shadow-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.new-payment-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.new-payment-button:hover::before {
+  left: 100%;
+}
+
+.new-payment-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.print-receipt-button {
+  background: linear-gradient(45deg, #6c757d, #495057);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: var(--shadow-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.print-receipt-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.print-receipt-button:hover::before {
+  left: 100%;
+}
+
+.print-receipt-button:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-heavy);
+}
+
+.success-footer {
+  border-top: 2px solid rgba(40, 167, 69, 0.1);
+  padding-top: 2rem;
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out 1.8s both;
+}
+
+.success-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(40, 167, 69, 0.3), transparent);
+}
+
+.success-footer p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 0.8rem;
+  opacity: 0.8;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Enhanced animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes checkmarkAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-180deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Floating success elements */
+.success-floating {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, rgba(40, 167, 69, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: floatSuccess 8s ease-in-out infinite;
+}
+
+.success-floating:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.success-floating:nth-child(2) {
+  top: 20%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.success-floating:nth-child(3) {
+  bottom: 20%;
+  left: 15%;
+  animation-delay: 4s;
+}
+
+@keyframes floatSuccess {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(120deg); }
+  66% { transform: translateY(8px) rotate(240deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .success-card {
+    margin: 0 1rem;
+    padding: 2.5rem;
+  }
+  
+  .success-content h2 {
+    font-size: 2.2rem;
+  }
+  
+  .success-message {
+    font-size: 1.1rem;
+  }
+  
+  .transaction-details {
+    padding: 1.5rem;
+  }
+  
+  .success-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .new-payment-button,
+  .print-receipt-button {
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .checkmark {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .checkmark span {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .success-card {
+    padding: 2rem;
+    margin: 0 0.5rem;
+  }
+  
+  .checkmark {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .checkmark span {
+    font-size: 2rem;
+  }
+  
+  .success-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .success-message {
+    font-size: 1rem;
+  }
+  
+  .transaction-details h3 {
+    font-size: 1.2rem;
+  }
+  
+  .detail-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .detail-label,
+  .detail-value {
+    font-size: 0.85rem;
+  }
+  
+  .detail-value.amount {
+    font-size: 1.1rem;
+  }
+  
+  .new-payment-button,
+  .print-receipt-button {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  
+  .success-footer p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .success-actions {
+    display: none;
+  }
+  
+  .success-card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .App-header,
+  .App-footer {
+    display: none;
+  }
+  
+  .checkmark {
+    box-shadow: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.new-payment-button:focus-visible,
+.print-receipt-button:focus-visible {
+  outline: 2px solid #5f3dc4;
+  outline-offset: 2px;
+}
+
+/* Success state animations */
+.success-card.success {
+  animation: successGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes successGlow {
+  from { box-shadow: var(--shadow-heavy); }
+  to { box-shadow: 0 20px 60px rgba(40, 167, 69, 0.3); }
+} 
